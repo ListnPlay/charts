@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "druid.turnilo.fullname" . }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.turnilo.name }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.turnilo.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "druid.name" . }}
+      release: {{ .Release.Name }}
+      component: {{ .Values.turnilo.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "druid.name" . }}
+        release: {{ .Release.Name }}
+        component: {{ .Values.turnilo.name }}
+      {{- with .Values.turnilo.podAnnotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+      {{- end }}        
+    spec:
+      containers:
+        - name: {{ include "druid.turnilo.fullname" . }}
+          image: node:10-alpine
+          command: ["/bin/sh", "-c"]
+          args: ['npm install -g turnilo@{{ .Values.turnilo.version }} && turnilo --druid http://{{ include "druid.broker.fullname" . }}:{{ .Values.broker.port }}']
+          ports:
+          - name: http
+            containerPort: 9090
+          livenessProbe:
+            initialDelaySeconds: 15
+            httpGet:
+              path: /health/alive
+              port: http
+          readinessProbe:
+            initialDelaySeconds: 15
+            httpGet:
+              path: /health/ready
+              port: http
+          env:
+          - name: NODE_ENV
+            value: production
+          resources:
+{{ toYaml .Values.turnilo.resources | indent 12 }}
+    {{- with .Values.turnilo.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.turnilo.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.turnilo.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

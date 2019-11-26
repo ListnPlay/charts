@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "druid.router.fullname" . }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.router.name }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.router.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "druid.name" . }}
+      release: {{ .Release.Name }}
+      component: {{ .Values.router.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "druid.name" . }}
+        release: {{ .Release.Name }}
+        component: {{ .Values.router.name }}
+      {{- with .Values.router.podAnnotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+      {{- end }}
+    spec:
+      containers:
+        - name: {{ include "druid.router.fullname" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: [ "router" ]
+          env:
+          {{- if .Values.zookeeper.enabled }}
+          - name: druid_zk_service_host
+            value: "{{ .Release.Name }}-zookeeper-headless:2181"
+          {{- else }}
+          - name: druid_zk_service_host
+            value: "{{ .Values.zkHosts }}"
+          {{- end }}
+          - name: JAVA_OPTS
+            value: {{ .Values.router.javaOpts }}
+          - name: druid_extensions_loadList
+            value: {{ .Values.extensions.loadList | toJson | quote }}
+          {{- range $key, $value :=  .Values.env }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.router.port }}
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: 60
+            httpGet:
+              path: /status/health
+              port: {{ .Values.router.port }}
+          readinessProbe:
+            initialDelaySeconds: 60
+            httpGet:
+              path: /status/health
+              port: {{ .Values.router.port }}
+          resources:
+{{ toYaml .Values.router.resources | indent 12 }}
+    {{- with .Values.router.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.router.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.router.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

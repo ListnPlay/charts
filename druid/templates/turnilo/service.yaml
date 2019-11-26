@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "druid.turnilo.fullname" . }}
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.turnilo.name }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.turnilo.serviceType }}
+  ports:
+    - port: {{ .Values.turnilo.servicePort }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "druid.name" . }}
+    release: {{ .Release.Name }}
+    component: {{ .Values.turnilo.name }}
