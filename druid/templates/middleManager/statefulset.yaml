@@ -74,11 +74,11 @@ spec:
         - name: druid_zk_service_host
           value: {{ .Values.zkHosts }}
         {{- end }}
-        - name: JAVA_OPTS
-          value: {{ .Values.middleManager.javaOpts }}
         - name: druid_extensions_loadList
           value: {{ .Values.extensions.loadList | toJson | quote }}
-        {{- range $key, $value := .Values.env }}
+        - name: JAVA_OPTS
+          value: {{ .Values.middleManager.javaOpts }}
+        {{- range $key, $value :=  mergeOverwrite .Values.env .Values.middleManager.env }}
         - name: {{ $key }}
           value: {{ $value | quote }}
         {{- end }}

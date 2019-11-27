@@ -41,7 +41,7 @@ spec:
           {{- end }}
           - name: JAVA_OPTS
             value: {{ .Values.coordinator.javaOpts }}
-          {{- range $key, $value :=  .Values.env }}
+          {{- range $key, $value :=  mergeOverwrite .Values.env .Values.coordinator.env }}
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}

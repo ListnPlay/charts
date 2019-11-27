@@ -16,6 +16,8 @@ extensions:
   - druid-parquet-extensions
   - druid-kinesis-indexing-service
 
+# Common env vars
+# service specific env will overwrite these values
 env:
   DRUID_USE_CONTAINER_IP: true
 
@@ -41,7 +43,7 @@ env:
 
   druid_indexer_queue_startDelay: PT30S
 
-  druid_indexer_runner_javaOptsArray: '["-server", "-Xmx2g", "-Xms2g", "-XX:MaxDirectMemorySize=6g", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
+  druid_indexer_runner_javaOptsArray: '["-server", "-Xmx1g", "-Xms1g", "-XX:MaxDirectMemorySize=3g", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
   druid_processing_buffer_sizeBytes: "10000000"
   druid_processing_numMergeBuffers: "4"
   druid_processing_numThreads: "16"
@@ -58,7 +60,7 @@ env:
 turnilo:
   replicaCount: 1
   name: turnilo
-  version: 1.18.0
+  version: 1.19.0
   serviceType: ClusterIP
   servicePort: 80
   ingress:
@@ -85,7 +87,7 @@ router:
   port: 8888
   servicePort: 80
   serviceType: ClusterIP
-  javaOpts: "-Xms1G -Xmx1G"
+  javaOpts:
   ingress:
     enabled: false
     annotations: {}
@@ -103,13 +105,14 @@ router:
   tolerations: []
   affinity: {}
   podAnnotations: {}
+  env: {}
 
 broker:
   replicaCount: 1
   name: broker
   port: 8082
   serviceType: ClusterIP
-  javaOpts: "-Xms2G -Xmx2G -XX:MaxDirectMemorySize=8g"
+  javaOpts:
   ingress:
     enabled: false
     annotations: {}
@@ -127,6 +130,12 @@ broker:
   tolerations: []
   affinity: {}
   podAnnotations: {}
+  env:
+    DRUID_XMX: 1g
+    DRUID_XMS: 1g
+    DRUID_MAXNEWSIZE: 250m
+    DRUID_NEWSIZE: 250m
+    DRUID_MAXDIRECTMEMORYSIZE: 6g
 
 # coordinator also runs an overlord by default (master node)
 coordinator:
@@ -134,7 +143,7 @@ coordinator:
   name: coordinator
   port: 8081
   serviceType: ClusterIP
-  javaOpts: "-Xms1G -Xmx1G"
+  javaOpts:
   ingress:
     enabled: false
     annotations: {}
@@ -152,13 +161,19 @@ coordinator:
   tolerations: []
   affinity: {}
   podAnnotations: {}
+  env:
+    DRUID_XMX: 256m
+    DRUID_XMS: 256m
+#    DRUID_MAXNEWSIZE: 250m
+#    DRUID_NEWSIZE: 250m
+#    DRUID_MAXDIRECTMEMORYSIZE: 6g
 
 historical:
   name: historical
   replicaCount: 1
   port: 8083
   serviceType: ClusterIP
-  javaOpts: "-Xms2G -Xmx2G -XX:MaxDirectMemorySize=6g"
+  javaOpts:
   ingress:
     enabled: false
     annotations: {}
@@ -188,14 +203,19 @@ historical:
     maxUnavailable: 1
   updateStrategy:
     type: RollingUpdate
-
+  env:
+    DRUID_XMX: 1g
+    DRUID_XMS: 1g
+    DRUID_MAXNEWSIZE: 250m
+    DRUID_NEWSIZE: 250m
+    DRUID_MAXDIRECTMEMORYSIZE: 6g
 
 middleManager:
   name: middle-manager
   replicaCount: 1
   port: 8091
   serviceType: ClusterIP
-  javaOpts: "-Xms2G -Xmx2G"
+  javaOpts:
   ingress:
     enabled: false
     annotations: {}
@@ -225,6 +245,13 @@ middleManager:
     maxUnavailable: 1
   updateStrategy:
     type: RollingUpdate
+  env: {}
+#    DRUID_XMX: 1g
+#    DRUID_XMS: 1g
+#    DRUID_MAXNEWSIZE: 250m
+#    DRUID_NEWSIZE: 250m
+#    DRUID_MAXDIRECTMEMORYSIZE: 6172m
+
 
 
 # ------------------------------------------------------------------------------
