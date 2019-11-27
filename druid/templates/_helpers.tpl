@@ -72,13 +72,6 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{ template "druid.fullname" . }}-{{ .Values.turnilo.name }}
 {{- end -}}
 
-{{/*
-Create a default fully qualified overlord name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
-*/}}
-{{- define "druid.overlord.fullname" -}}
-{{ template "druid.fullname" . }}-{{ .Values.overlord.name }}
-{{- end -}}
 
 {{/*
 Create a default fully qualified coordinator name.

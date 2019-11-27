@@ -129,37 +129,11 @@ broker:
   affinity: {}
   podAnnotations: {}
 
-
+# coordinator also runs an overlord by default (master node)
 coordinator:
   replicaCount: 1
   name: coordinator
   port: 8081
-  serviceType: ClusterIP
-  javaOpts: "-Xms1G -Xmx1G"
-  ingress:
-    enabled: false
-    annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    path: /
-    hosts:
-      - chart-example.local
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
-  resources: {}
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
-  podAnnotations: {}
-
-# coordinator also runs an overlord by default (master node)
-# so skipping this with replicaCount=0
-overlord:
-  replicaCount: 0
-  name: overlord
-  port: 8090
   serviceType: ClusterIP
   javaOpts: "-Xms1G -Xmx1G"
   ingress:
