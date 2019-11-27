@@ -3,7 +3,28 @@ entries:
   druid:
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-11-27T11:23:55.596517+02:00"
+    created: "2019-11-27T12:10:05.402581+02:00"
+    description: Apache Druid (incubating) is a high performance analytics data store
+      for event-driven data.
+    digest: 0d025d4ee4e9ee252a061ee1872df50891836a258ac05f55ff23d734ac9c754c
+    home: http://druid.io/
+    icon: http://druid.io/img/druid_nav.png
+    keywords:
+    - olap
+    - database
+    - analytics
+    maintainers:
+    - email: ram@feature.fm
+      name: ram
+    name: druid
+    sources:
+    - https://github.com/listnplay/charts/druid
+    urls:
+    - druid-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v1
+    appVersion: "0.16"
+    created: "2019-11-27T12:10:05.400245+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: fd6049db3ba419612e15b31b110d5f4f05bcc972a6fe22c746d47b45f4f12ee2
@@ -22,4 +43,4 @@ entries:
     urls:
     - druid-0.3.0.tgz
     version: 0.3.0
-generated: "2019-11-27T11:23:55.593392+02:00"
+generated: "2019-11-27T12:10:05.396077+02:00"
