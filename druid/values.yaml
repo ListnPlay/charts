@@ -15,6 +15,7 @@ extensions:
     - druid-kafka-indexing-service
     - druid-parquet-extensions
     - druid-kinesis-indexing-service
+    - druid-google-extensions
 
 env:
   DRUID_USE_CONTAINER_IP: true
