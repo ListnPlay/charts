@@ -3,10 +3,10 @@ entries:
   druid:
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-11-26T17:21:02.408349+02:00"
+    created: "2019-11-27T11:23:55.596517+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
-    digest: 655da32a41be36c7692ebb7268badba0f014c17bc17f1d1da127031e84f83ec8
+    digest: fd6049db3ba419612e15b31b110d5f4f05bcc972a6fe22c746d47b45f4f12ee2
     home: http://druid.io/
     icon: http://druid.io/img/druid_nav.png
     keywords:
@@ -22,4 +22,4 @@ entries:
     urls:
     - druid-0.3.0.tgz
     version: 0.3.0
-generated: "2019-11-26T17:21:02.3993+02:00"
+generated: "2019-11-27T11:23:55.593392+02:00"
