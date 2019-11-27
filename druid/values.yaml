@@ -7,15 +7,14 @@ image:
 
 extensions:
   loadList:
-    - druid-histogram
-    - druid-datasketches
-    - druid-lookups-cached-global
-    - postgresql-metadata-storage
-    - druid-s3-extensions
-    - druid-kafka-indexing-service
-    - druid-parquet-extensions
-    - druid-kinesis-indexing-service
-    - druid-google-extensions
+  - druid-histogram
+  - druid-datasketches
+  - druid-lookups-cached-global
+  - postgresql-metadata-storage
+  - druid-s3-extensions
+  - druid-kafka-indexing-service
+  - druid-parquet-extensions
+  - druid-kinesis-indexing-service
 
 env:
   DRUID_USE_CONTAINER_IP: true

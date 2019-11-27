@@ -35,12 +35,12 @@ spec:
           - name: http
             containerPort: 9090
           livenessProbe:
-            initialDelaySeconds: 15
+            initialDelaySeconds: 60
             httpGet:
               path: /health/alive
               port: http
           readinessProbe:
-            initialDelaySeconds: 15
+            initialDelaySeconds: 60
             httpGet:
               path: /health/ready
               port: http
