@@ -13,22 +13,27 @@ data:
   node.properties: |
     node.environment={{ .Values.server.node.environment }}
     node.data-dir={{ .Values.server.node.dataDir }}
+    plugin.dir=/usr/lib/presto/plugin
 
   jvm.config: |
     -server
     -Xmx{{ .Values.server.jvm.maxHeapSize }}
     -XX:+{{ .Values.server.jvm.gcMethod.type }}
     -XX:G1HeapRegionSize={{ .Values.server.jvm.gcMethod.g1.heapRegionSize }}
-    -XX:+UseGCOverheadLimit
+    -XX:-UseBiasedLocking
+    -XX:+UseG1GC
     -XX:+ExplicitGCInvokesConcurrent
     -XX:+HeapDumpOnOutOfMemoryError
+    -XX:+UseGCOverheadLimit
     -XX:+ExitOnOutOfMemoryError
+    -XX:ReservedCodeCacheSize=256M
+    -Djdk.attach.allowAttachSelf=true
+    -Djdk.nio.maxCachedBufferSize=2000000
 
   config.properties: |
     coordinator=false
     http-server.http.port={{ .Values.server.config.http.port }}
     query.max-memory={{ .Values.server.config.query.maxMemory }}
-    query.max-memory-per-node={{ .Values.server.config.query.maxMemoryPerNode }}
     discovery.uri=http://{{ template "presto.fullname" . }}:{{ .Values.service.port }}
 
   log.properties: |
