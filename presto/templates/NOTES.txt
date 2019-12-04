@@ -10,6 +10,6 @@ Get the application URL by running these commands:
 {{- end }}
 
 Or better yet:
-    kubectl port-forward svc/presto 8080:8080 &
+  kubectl port-forward svc/presto 8080:80 &
 
 and visit http://localhost:8080

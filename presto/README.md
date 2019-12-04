@@ -80,7 +80,7 @@ $ helm upgrade --recreate-pods -f /path/to/your/values.yaml my-release featurefm
 ### Usage/Admin
 
 * make sure you have access to the presto service.
-  One way to do this: `kubectl port-forward svc/presto 80:8080`
+  One way to do this: `kubectl port-forward svc/presto 8080:80`
 
 You can either connect to presto with the cli or use the JDBC driver:
 * CLI: Download [presto-cli-326-executable.jar](https://repo1.maven.org/maven2/io/prestosql/presto-cli/326/presto-cli-326-executable.jar), 
