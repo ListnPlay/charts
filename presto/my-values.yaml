@@ -1,0 +1,26 @@
+# Do not take the default values as is,
+# rather override just the values you need to change.
+
+# Add your own catalog to connect to your data sources
+
+server:
+  workers: 4
+  node:
+    environment: my-super-env
+  catalog:
+    log.properties: |
+      connector.name=localfile
+      presto-logs.http-request-log.location=/data/presto/var/log
+      presto-logs.http-request-log.pattern=*.log
+
+    mysql_test.properties: |
+      connector.name=mysql
+      connection-url=jdbc:mysql://example.com:port
+      connection-user=user
+      connection-password=password
+    postgres_prod.properties: |
+      connector.name=postgresql
+      connection-url=jdbc:postgresql://example.net:5432/database
+      connection-user=root
+      connection-password=secret
+

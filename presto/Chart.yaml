@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: 0.326
+description: Distributed SQL query engine for running interactive analytic queries
+name: presto
+version: 0.3.0
+home: https://prestosql.io
+icon: https://prestosql.io/assets/presto.png
+sources:
+  - https://github.com/prestosql/presto
+maintainers:
+  - name: ram
+    email: ram@feature.fm

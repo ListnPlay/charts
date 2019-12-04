@@ -1,0 +1,40 @@
+server:
+  workers: 2
+  node:
+    environment: k8s
+    dataDir: /data/presto
+  log:
+    presto:
+      level: INFO
+  config:
+    path: /usr/lib/presto/etc
+    http:
+      port: 8080
+    query:
+      maxMemory: "8GB"
+      maxMemoryPerNode: "4GB"
+  jvm:
+    maxHeapSize: "12G"
+    gcMethod:
+      type: "UseG1GC"
+      g1:
+        heapRegionSize: "32M"
+  catalog:
+    log.properties: |
+      connector.name=localfile
+      presto-logs.http-request-log.location=/data/presto/var/log
+      presto-logs.http-request-log.pattern=*.log
+
+image:
+  repository: prestosql/presto
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
