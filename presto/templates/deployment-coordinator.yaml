@@ -42,10 +42,12 @@ spec:
               containerPort: {{ .Values.server.config.http.port }}
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /v1/info/state
               port: http-coord
           readinessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /v1/info/state
               port: http-coord
