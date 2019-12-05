@@ -3,13 +3,29 @@ Get the application URL by running these commands:
   export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "presto.fullname" . }})
   export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
   echo http://$NODE_IP:$NODE_PORT
+
+and
+ - visit http://$NODE_IP:$NODE_PORT
+
+ - run the cli (from https://prestosql.io/docs/current/installation/cli.html):
+
+  ./presto --server $NODE_IP:$NODE_PORT
+
+ - use the JDBC driver (from https://prestosql.io/docs/current/installation/jdbc.html)
+   with URL: jdbc:presto://$NODE_IP:$NODE_PORT/
+
 {{- else if contains "ClusterIP" .Values.service.type }}
-  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app={{ template "presto.name" . }},release={{ .Release.Name }},component=coordinator" -o jsonpath="{.items[0].metadata.name}")
-  echo "Visit http://127.0.0.1:8080 to use your application"
-  kubectl port-forward $POD_NAME 8080:8080
+
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "presto.fullname" . }} 8080:{{ .Values.service.port }} &
+
+and
+ - visit http://localhost:8080
+
+ - run the cli (from https://prestosql.io/docs/current/installation/cli.html):
+
+    ./presto --server localhost:8080
+
+ - use the JDBC driver (from https://prestosql.io/docs/current/installation/jdbc.html)
+   with URL: jdbc:presto://localhost:8080/
+
 {{- end }}
-
-Or better yet:
-  kubectl port-forward svc/presto 8080:80 &
-
-and visit http://localhost:8080
