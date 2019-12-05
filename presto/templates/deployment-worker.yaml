@@ -34,25 +34,25 @@ spec:
         - name: {{ .Chart.Name }}-worker
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.server.config.http.port }}
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: /v1/info/state
+              port: http
+          readinessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: /v1/info/state
+              port: http
           volumeMounts:
             - mountPath: {{ .Values.server.config.path }}
               name: config-volume
             - mountPath: {{ .Values.server.config.path }}/catalog
               name: catalog-volume
-          livenessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - {{ .Values.server.config.path }}/health_check.sh
-            initialDelaySeconds: 10
-            periodSeconds: 25
-          readinessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - {{ .Values.server.config.path }}/health_check.sh
-            initialDelaySeconds: 5
-            periodSeconds: 10
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

@@ -20,7 +20,6 @@ data:
     -XX:+{{ .Values.server.jvm.gcMethod.type }}
     -XX:G1HeapRegionSize={{ .Values.server.jvm.gcMethod.g1.heapRegionSize }}
     -XX:-UseBiasedLocking
-    -XX:+UseG1GC
     -XX:+ExplicitGCInvokesConcurrent
     -XX:+HeapDumpOnOutOfMemoryError
     -XX:+UseGCOverheadLimit

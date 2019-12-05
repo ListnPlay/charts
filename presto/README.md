@@ -11,7 +11,7 @@ While stable/presto was ok, it is no longer maintained,
 and its configuration was not ideal.
 This chart has the catalog as simple configuration (thanks to [locut](https://github.com/lotuc) who created the base chart) 
 
-And is the only one that is based on [prestosql](https://github.com/prestosql/presto) (and not the prestodb from Facebook) 
+And this chart is the only one that is based on [prestosql](https://github.com/prestosql/presto) (and not the prestodb from Facebook) 
 so you can get the latest versions in the 3xx ranges.
 
 And the only one using the official [prestosql/presto](https://hub.docker.com/r/prestosql/presto) docker image directly 

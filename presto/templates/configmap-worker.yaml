@@ -21,7 +21,6 @@ data:
     -XX:+{{ .Values.server.jvm.gcMethod.type }}
     -XX:G1HeapRegionSize={{ .Values.server.jvm.gcMethod.g1.heapRegionSize }}
     -XX:-UseBiasedLocking
-    -XX:+UseG1GC
     -XX:+ExplicitGCInvokesConcurrent
     -XX:+HeapDumpOnOutOfMemoryError
     -XX:+UseGCOverheadLimit
@@ -46,9 +45,9 @@ data:
 #    cp {{ .Values.server.config.path }}/catalog/*properties $PRESTO_CONF_DIR/catalog
 #    launcher run
 
-  health_check.sh: |
-    #!/bin/bash
-    curl --silent {{ template "presto.fullname" . }}:{{ .Values.service.port }}/v1/node | tr "," "\n" | grep --silent $(hostname -i)
+#  health_check.sh: |
+#    #!/bin/bash
+#    curl --silent {{ template "presto.fullname" . }}:{{ .Values.service.port }}/v1/node | tr "," "\n" | grep --silent $(hostname -i)
 
 ---
 {{- end }}

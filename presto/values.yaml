@@ -12,7 +12,6 @@ server:
       port: 8080
     query:
       maxMemory: "8GB"
-      maxMemoryPerNode: "2GB"
   jvm:
     maxHeapSize: "16G"
     gcMethod:

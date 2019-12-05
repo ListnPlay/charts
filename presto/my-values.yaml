@@ -1,10 +1,13 @@
-# Do not take the default values as is,
+# Do not take the default values.yaml,
 # rather override just the values you need to change.
 
 # Add your own catalog to connect to your data sources
 
+# Note: Setting workers to 0 will configure a single container deployment (coordinator as worker)
+
+
 server:
-  workers: 4
+  workers: 2
   node:
     environment: my-super-env
   catalog:
