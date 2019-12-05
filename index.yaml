@@ -3,7 +3,7 @@ entries:
   druid:
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-12-05T11:32:39.529005+02:00"
+    created: "2019-12-05T11:56:36.267286+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: ec27195404e30c626fa12913917885d0299b5302ead87b0c9a6124758b56e4a5
@@ -24,7 +24,7 @@ entries:
     version: 0.3.3
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-12-05T11:32:39.525547+02:00"
+    created: "2019-12-05T11:56:36.26378+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: a683e419683ae67ff15a7a9012abb3d5107d002daca7728e38850ba48198d56e
@@ -45,7 +45,7 @@ entries:
     version: 0.3.2
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-12-05T11:32:39.521515+02:00"
+    created: "2019-12-05T11:56:36.260176+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: 0d025d4ee4e9ee252a061ee1872df50891836a258ac05f55ff23d734ac9c754c
@@ -66,7 +66,7 @@ entries:
     version: 0.3.1
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2019-12-05T11:32:39.517412+02:00"
+    created: "2019-12-05T11:56:36.256091+02:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: fd6049db3ba419612e15b31b110d5f4f05bcc972a6fe22c746d47b45f4f12ee2
@@ -88,7 +88,23 @@ entries:
   presto:
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2019-12-05T11:32:39.529454+02:00"
+    created: "2019-12-05T11:56:36.269335+02:00"
+    description: Distributed SQL query engine for running interactive analytic queries
+    digest: e8adff9f090450bae75bb1e945681914aa6b4fc403654e4eb3ff2d8079baa3e7
+    home: https://prestosql.io
+    icon: https://prestosql.io/assets/presto.png
+    maintainers:
+    - email: ram@feature.fm
+      name: ram
+    name: presto
+    sources:
+    - https://github.com/prestosql/presto
+    urls:
+    - presto-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v1
+    appVersion: "0.326"
+    created: "2019-12-05T11:56:36.268833+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 1bd880c347818683438d6fc8e0893428f691e36a8ce3ed4ed3a32b254f724b32
     home: https://prestosql.io
@@ -102,4 +118,4 @@ entries:
     urls:
     - presto-0.3.0.tgz
     version: 0.3.0
-generated: "2019-12-05T11:32:39.512515+02:00"
+generated: "2019-12-05T11:56:36.252159+02:00"
