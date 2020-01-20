@@ -108,6 +108,8 @@ spec:
       - name: data
         emptyDir: {}
   {{- end }}
+      securityContext:
+          fsGroup: 1000
   updateStrategy:
     type: {{ .Values.middleManager.updateStrategy.type }}
   {{- if .Values.middleManager.persistence.enabled }}

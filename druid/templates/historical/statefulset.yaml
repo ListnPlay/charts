@@ -109,6 +109,8 @@ spec:
       - name: data
         emptyDir: {}
   {{- end }}
+      securityContext:
+        fsGroup: 1000
   updateStrategy:
     type: {{ .Values.historical.updateStrategy.type }}
   {{- if .Values.historical.persistence.enabled }}
