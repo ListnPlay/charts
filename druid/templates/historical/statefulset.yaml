@@ -102,7 +102,7 @@ spec:
         - containerPort: {{ .Values.historical.port }}
           name: http
         volumeMounts:
-        - mountPath: /var/druid/
+        - mountPath: /opt/druid/var
           name: data
   {{- if not .Values.historical.persistence.enabled }}
       volumes:

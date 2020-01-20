@@ -2,7 +2,7 @@
 
 image:
   repository: apache/incubator-druid
-  tag: 0.16.0-incubating
+  tag: 0.16.1-incubating
   pullPolicy: IfNotPresent
 
 extensions:
@@ -60,7 +60,7 @@ env:
 turnilo:
   replicaCount: 1
   name: turnilo
-  version: 1.19.0
+  version: 1.20.1
   serviceType: ClusterIP
   servicePort: 80
   ingress:
