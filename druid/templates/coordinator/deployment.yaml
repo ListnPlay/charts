@@ -27,42 +27,68 @@ spec:
       {{- end }} 
     spec:
       containers:
-        - name: {{ include "druid.coordinator.fullname" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: [ "coordinator" ]
-          env:
-          {{- if .Values.zookeeper.enabled }}
-          - name: druid_zk_service_host
-            value: {{ .Release.Name }}-zookeeper-headless:2181
-          {{- else }}
-          - name: druid_zk_service_host
-            value: {{ .Values.zkHosts }}
-          {{- end }}
-          - name: JAVA_OPTS
-            value: {{ .Values.coordinator.javaOpts }}
-          {{- range $key, $value :=  mergeOverwrite .Values.env .Values.coordinator.env }}
-          - name: {{ $key }}
-            value: {{ $value | quote }}
-          {{- end }}
-          - name: druid_extensions_loadList
-            value: {{ .Values.extensions.loadList | toJson | quote }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.coordinator.port }}
-              protocol: TCP
-          livenessProbe:
-            initialDelaySeconds: 60
-            httpGet:
-              path: /status/health
-              port: {{ .Values.coordinator.port }}
-          readinessProbe:
-            initialDelaySeconds: 60
-            httpGet:
-              path: /status/health
-              port: {{ .Values.coordinator.port }}
-          resources:
+      - name: {{ include "druid.coordinator.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: [ "coordinator" ]
+        env:
+        {{- if .Values.zookeeper.enabled }}
+        - name: druid_zk_service_host
+          value: {{ .Release.Name }}-zookeeper-headless:2181
+        {{- else }}
+        - name: druid_zk_service_host
+          value: {{ .Values.zkHosts }}
+        {{- end }}
+        - name: JAVA_OPTS
+          value: {{ .Values.coordinator.javaOpts }}
+        {{- range $key, $value :=  mergeOverwrite .Values.env .Values.coordinator.env }}
+        - name: {{ $key }}
+          value: {{ $value | quote }}
+        {{- end }}
+        - name: druid_extensions_loadList
+          value: {{ .Values.extensions.loadList | toJson | quote }}
+        {{- if .Values.monitoring.enabled }}
+        - name: druid_emitter
+          value: http
+        - name: druid_emitter_http_recipientBaseUrl
+          value: "http://localhost:{{ .Values.monitoring.port }}"
+        {{- end}}
+
+        ports:
+          - name: http
+            containerPort: {{ .Values.coordinator.port }}
+            protocol: TCP
+        livenessProbe:
+          initialDelaySeconds: 60
+          httpGet:
+            path: /status/health
+            port: {{ .Values.coordinator.port }}
+        readinessProbe:
+          initialDelaySeconds: 60
+          httpGet:
+            path: /status/health
+            port: {{ .Values.coordinator.port }}
+        resources:
 {{ toYaml .Values.coordinator.resources | indent 12 }}
+
+      {{- if .Values.monitoring.enabled }}
+      - name: druid-metrics-exporter
+        image: featurefm/druid-exporter
+        imagePullPolicy: Always
+        command: [".venv/bin/druid_exporter", "--debug", "--listen=:{{ .Values.monitoring.port }}"]
+        ports:
+          - name: metrics
+            containerPort: {{ .Values.monitoring.port }}
+        livenessProbe:
+          httpGet:
+            path: /metrics
+            port: metrics
+        readinessProbe:
+          httpGet:
+            path: /metrics
+            port: metrics
+      {{- end }}
+
     {{- with .Values.coordinator.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}

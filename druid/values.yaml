@@ -1,8 +1,8 @@
 # Default values for druid.
 
 image:
-  repository: apache/incubator-druid
-  tag: 0.16.1-incubating
+  repository: apache/druid
+  tag: 0.17.0
   pullPolicy: IfNotPresent
 
 extensions:
@@ -19,8 +19,6 @@ extensions:
 # Common env vars
 # service specific env will overwrite these values
 env:
-  DRUID_USE_CONTAINER_IP: true
-
   # Metadata storage
   # only change these if using your own postgres instance (i.e. postgresql.enabled: false)
   # leave as-is otherwise
@@ -54,8 +52,6 @@ env:
   druid_indexer_fork_property_druid_processing_buffer_sizeBytes: "10000000"
   druid_indexer_fork_property_druid_processing_numThreads: "1"
 
-  druid_emitter_logging_logLevel: debug
-  DRUID_LOG4J: '<?xml version="1.0" encoding="UTF-8" ?><Configuration status="WARN"><Appenders><Console name="Console" target="SYSTEM_OUT"><PatternLayout pattern="%d{ISO8601} %p [%t] %c - %m%n"/></Console></Appenders><Loggers><Root level="info"><AppenderRef ref="Console"/></Root><Logger name="org.apache.druid.jetty.RequestLog" additivity="false" level="DEBUG"><AppenderRef ref="Console"/></Logger></Loggers></Configuration>'
 
 turnilo:
   replicaCount: 1
@@ -252,7 +248,10 @@ middleManager:
 #    DRUID_NEWSIZE: 250m
 #    DRUID_MAXDIRECTMEMORYSIZE: 6172m
 
-
+monitoring:
+  enabled: true
+  createServiceMonitor: true
+  port: 8000
 
 # ------------------------------------------------------------------------------
 # Zookeeper:

@@ -1,0 +1,23 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "druid.router.fullname" . }}-metrics
+  labels:
+    app: {{ include "druid.name" . }}
+    chart: {{ include "druid.chart" . }}
+    component: {{ .Values.router.name }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    monitoring: enabled
+spec:
+  ports:
+    - name: metrics
+      port: {{ .Values.monitoring.port }}
+      targetPort: metrics
+      protocol: TCP
+  selector:
+    app: {{ include "druid.name" . }}
+    release: {{ .Release.Name }}
+    component: {{ .Values.router.name }}
+{{- end }}

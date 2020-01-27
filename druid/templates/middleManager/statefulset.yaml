@@ -82,7 +82,12 @@ spec:
         - name: {{ $key }}
           value: {{ $value | quote }}
         {{- end }}
-
+        {{- if .Values.monitoring.enabled }}
+        - name: druid_emitter
+          value: http
+        - name: druid_emitter_http_recipientBaseUrl
+          value: "http://localhost:{{ .Values.monitoring.port }}"
+        {{- end}}
         resources:
 {{ toYaml .Values.middleManager.resources | indent 12 }}
         livenessProbe:
@@ -103,6 +108,25 @@ spec:
         volumeMounts:
         - mountPath: /opt/druid/var
           name: data
+
+      {{- if .Values.monitoring.enabled }}
+      - name: druid-metrics-exporter
+        image: featurefm/druid-exporter
+        imagePullPolicy: Always
+        command: [".venv/bin/druid_exporter", "--debug", "--listen=:{{ .Values.monitoring.port }}"]
+        ports:
+          - name: metrics
+            containerPort: {{ .Values.monitoring.port }}
+        livenessProbe:
+          httpGet:
+            path: /metrics
+            port: metrics
+        readinessProbe:
+          httpGet:
+            path: /metrics
+            port: metrics
+      {{- end }}
+
   {{- if not .Values.middleManager.persistence.enabled }}
       volumes:
       - name: data

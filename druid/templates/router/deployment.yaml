@@ -47,6 +47,12 @@ spec:
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}
+          {{- if .Values.monitoring.enabled }}
+          - name: druid_emitter
+            value: http
+          - name: druid_emitter_http_recipientBaseUrl
+            value: "http://localhost:{{ .Values.monitoring.port }}"
+          {{- end}}
           ports:
             - name: http
               containerPort: {{ .Values.router.port }}
@@ -63,6 +69,25 @@ spec:
               port: {{ .Values.router.port }}
           resources:
 {{ toYaml .Values.router.resources | indent 12 }}
+
+        {{- if .Values.monitoring.enabled }}
+        - name: druid-metrics-exporter
+          image: featurefm/druid-exporter
+          imagePullPolicy: Always
+          command: [".venv/bin/druid_exporter", "--debug", "--listen=:{{ .Values.monitoring.port }}"]
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.monitoring.port }}
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+        {{- end }}
+
     {{- with .Values.router.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
