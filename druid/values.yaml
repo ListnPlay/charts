@@ -19,23 +19,15 @@ extensions:
 # Common env vars
 # service specific env will overwrite these values
 env:
-  # Metadata storage
-  # only change these if using your own postgres instance (i.e. postgresql.enabled: false)
-  # leave as-is otherwise
-  druid_metadata_storage_host:
-  druid_metadata_storage_type: postgresql
-  druid_metadata_storage_connector_connectURI: jdbc:postgresql://druid-postgresql:5432/druid
-  druid_metadata_storage_connector_user: druid
-  druid_metadata_storage_connector_password: druid
-
   # Deep storage
-  # specify your bucket name for s3 deep storage
-  druid_storage_type: s3
-  druid_storage_bucket: <druid-deep-storage-bucket>
-  druid_storage_baseKey: druid/segments
-  druid_indexer_logs_type: s3
-  druid_indexer_logs_s3Bucket: <druid-deep-storage-bucket>
-  druid_indexer_logs_s3Prefix: druid/indexing-logs
+  # specify your bucket name for s3 deep storage & indexer logs
+  # e.g.:
+  #  druid_storage_type: s3
+  #  druid_storage_bucket: <druid-deep-storage-bucket>
+  #  druid_storage_baseKey: druid/segments
+  #  druid_indexer_logs_type: s3
+  #  druid_indexer_logs_s3Bucket: <druid-deep-storage-bucket>
+  #  druid_indexer_logs_s3Prefix: druid/indexing-logs
 
   druid_coordinator_balancer_strategy: cachingCost
 

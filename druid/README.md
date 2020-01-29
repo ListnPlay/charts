@@ -21,7 +21,10 @@ Add the featurefm helm repo:
 helm repo add featurefm 'https://raw.githubusercontent.com/listnplay/charts/master/'
 ```
 
-Create a `values.yaml` and make your modifications
+Create a `values.yaml` and make your modifications. 
+
+**Note** The chart will not work without *deep storage* defined (e.g. in s3 bucket). 
+See [my-values.yaml](my-values.yaml) file for example 
 
 
 To install the Druid Chart into your Kubernetes cluster:
@@ -42,27 +45,20 @@ If you want to delete your Chart, use this command:
 helm delete  --purge "druid"
 ```
 
-### Helm ingresses
+### Services
 
-The Chart provides ingress configuration to allow customization the installation by adapting
-the `values.yaml` depending on your setup.
-Please read the comments in the `values.yaml` file for more details on how to configure your reverse
-proxy or load balancer.
+This chart exposes the Druid services as kubernetes services:
 
-### Chart Prefix
+- druid-router - the new druid management console
+- druid-broker - for queries
+- druid-coordinator (+Overlord)
+- druid-historical
+- druid-middle-manager (+Peons)
 
-This Helm automatically prefixes all names using the release name to avoid collisions.
-
-### URL prefix
-
-This chart exposes 5 endpoints:
-
-- Druid Router - the new druid management console
-- Druid Broker - for queries
-- Druid Coordinator (+Overlord)
-- Druid Historical
-- Druid Middle Manager (+Peons)
-- [Turnilo](https://github.com/allegro/turnilo) (Allegro's cool data exploration and visualization UI for druid)
+and also:
+- druid-turnilo - [Allegro](https://github.com/allegro/turnilo)'s 
+cool data exploration and visualization UI for druid.
+(Note this is not a druid service and hence optional)
 
 
 ### Druid configuration

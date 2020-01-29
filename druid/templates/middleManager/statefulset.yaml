@@ -74,6 +74,16 @@ spec:
         - name: druid_zk_service_host
           value: {{ .Values.zkHosts }}
         {{- end }}
+        {{- if .Values.postgresql.enabled }}
+        - name: druid_metadata_storage_type
+          value: postgresql
+        - name: druid_metadata_storage_connector_connectURI
+          value: "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.postgresqlDatabase }}"
+        - name: druid_metadata_storage_connector_user
+          value: "{{ .Values.postgresql.postgresqlUsername }}"
+        - name: druid_metadata_storage_connector_password
+          value: "{{ .Values.postgresql.postgresqlPassword }}"
+        {{- end }}
         - name: druid_extensions_loadList
           value: {{ .Values.extensions.loadList | toJson | quote }}
         - name: JAVA_OPTS
