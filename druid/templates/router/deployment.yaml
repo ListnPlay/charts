@@ -63,6 +63,10 @@ spec:
           - name: druid_emitter_http_recipientBaseUrl
             value: "http://localhost:{{ .Values.monitoring.port }}"
           {{- end}}
+          {{- if .Values.router.managementProxy.enabled }}
+          - name: druid_router_managementProxy_enabled
+            value: "true"
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.router.port }}

@@ -70,6 +70,8 @@ turnilo:
   podAnnotations: {}
 
 router:
+  managementProxy:
+    enabled: true
   replicaCount: 1
   name: router
   port: 8888
