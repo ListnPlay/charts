@@ -79,7 +79,7 @@ spec:
           readinessProbe:
             initialDelaySeconds: 60
             httpGet:
-              path: /status/health
+              path: /status/selfDiscovered
               port: {{ .Values.router.port }}
           resources:
 {{ toYaml .Values.router.resources | indent 12 }}

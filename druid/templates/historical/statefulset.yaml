@@ -103,16 +103,16 @@ spec:
         resources:
 {{ toYaml .Values.historical.resources | indent 12 }}
         livenessProbe:
-          initialDelaySeconds: 120
+          initialDelaySeconds: {{ .Values.historical.health.livenessInitialDelaySeconds }}
           timeoutSeconds: 10
           httpGet:
             path: /status/health
             port: {{ .Values.historical.port }}
         readinessProbe:
-          initialDelaySeconds: 120
+          initialDelaySeconds: {{ .Values.historical.health.readinessInitialDelaySeconds }}
           timeoutSeconds: 10
           httpGet:
-            path: /status/health
+            path: /status/selfDiscovered
             port: {{ .Values.historical.port }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}

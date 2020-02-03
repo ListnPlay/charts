@@ -101,14 +101,14 @@ spec:
         resources:
 {{ toYaml .Values.middleManager.resources | indent 12 }}
         livenessProbe:
-          initialDelaySeconds: 60
+          initialDelaySeconds: {{ .Values.middleManager.health.livenessInitialDelaySeconds }}
           httpGet:
             path: /status/health
             port: {{ .Values.middleManager.port }}
         readinessProbe:
-          initialDelaySeconds: 60
+          initialDelaySeconds: {{ .Values.middleManager.health.readinessInitialDelaySeconds }}
           httpGet:
-            path: /status/health
+            path: /status/selfDiscovered
             port: {{ .Values.middleManager.port }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
