@@ -13,14 +13,14 @@ and it does not support the apache-druid official docker image.
 
 So we made some changes to match apache-druid 0.16+
 
-## Install Chart
+### Install the Chart
 
 Add the featurefm helm repo:
 
 ```
 helm repo add featurefm 'https://raw.githubusercontent.com/listnplay/charts/master/'
 ```
-
+s
 Create a `values.yaml` and make your modifications. Use [my-values.yaml](my-values.yaml) as template.
 
 
@@ -36,6 +36,7 @@ To install the Druid Chart into your Kubernetes cluster:
 helm install --namespace "bi" --name "druid" featurefm/druid -f my-values.yaml
 ```
 
+### Uninstall
 If you want to delete your Chart, use this command:
 
 ```bash
@@ -71,7 +72,7 @@ or can be disabled altogether if you choose to provide your own installations.
 
 ### Druid configuration
 
-The intention of this chart is to make druid easy install, 
+The intention of this chart is to make druid easy to install, 
 yet keep the option to apply more advanced configuration where needed.
 
 for example, the druid extension list can be stated as follow:
@@ -99,10 +100,12 @@ for example, here's the configuration for s3 bucket as deep storage:
       druid_indexer_logs_s3Bucket: <my-druid-deep-storage-bucket>
       druid_indexer_logs_s3Prefix: druid/indexing-logs
 
+Also note that each Druid service can have its own `env` section 
+to configure that service and possibly override the common `env` configuration.
 
 ### Monitoring
 
-Prometheus monitoring can be enabled as follow:
+Prometheus monitoring can be enabled as follows:
         
     monitoring:
       enabled: true
@@ -122,6 +125,6 @@ if restarted without persistence,
 such recovery will take considerable time to complete.
 
 
-### Chart full configuration options
+### Other Chart Configuration
 
 Full and up-to-date documentation can be found in the comments of the [values.yaml](values.yaml) file.

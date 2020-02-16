@@ -37,7 +37,7 @@ router:
   replicaCount: 1
 
 broker:
-  replicaCount: 1
+  replicaCount: 2
   env:
     DRUID_XMX: 1g
     DRUID_XMS: 1g
