@@ -1,0 +1,66 @@
+
+env:
+  # Deep storage
+  # specify your bucket name for s3 deep storage
+  druid_storage_type: s3
+  druid_storage_bucket: my-druid-deep-storage-bucket # use your own s3 bucket here
+  druid_storage_baseKey: druid/segments
+  druid_indexer_logs_type: s3
+  druid_indexer_logs_s3Bucket: my-druid-deep-storage-bucket # use your own s3 bucket here
+  druid_indexer_logs_s3Prefix: druid/indexing-logs
+
+  druid_coordinator_balancer_strategy: cachingCost
+
+  druid_indexer_queue_startDelay: PT30S
+  druid_indexer_runner_javaOptsArray: '["-server", "-Xmx2g", "-Xms2g", "-XX:MaxDirectMemorySize=8g", "-Duser.timezone=UTC", "-Dfile.encoding=UTF-8", "-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager"]'
+  druid_processing_buffer_sizeBytes: "100000000"
+  druid_processing_numMergeBuffers: "4"
+  druid_processing_numThreads: "16"
+  druid_server_maxSize: "300000000000"
+
+  druid_query_groupBy_maxOnDiskStorage: "3000000000"
+
+  druid_worker_capacity: "4"
+  druid_indexer_fork_property_druid_processing_numMergeBuffers: "2"
+  druid_indexer_fork_property_druid_processing_buffer_sizeBytes: "100000000"
+  druid_indexer_fork_property_druid_processing_numThreads: "1"
+
+monitoring:
+  enabled: true
+  createServiceMonitor: true
+
+turnilo:
+  replicaCount: 1
+  version: 1.21.0
+
+router:
+  replicaCount: 1
+
+broker:
+  replicaCount: 1
+  env:
+    DRUID_XMX: 1g
+    DRUID_XMS: 1g
+    DRUID_MAXNEWSIZE: 250m
+    DRUID_NEWSIZE: 250m
+    DRUID_MAXDIRECTMEMORYSIZE: 6g
+
+coordinator:
+  replicaCount: 3
+
+historical:
+  replicaCount: 2
+  javaOpts: "-XX:+UseG1GC"
+  env:
+    DRUID_XMX: 4g
+    DRUID_XMS: 2g
+    DRUID_MAXNEWSIZE: 250m
+    DRUID_NEWSIZE: 250m
+    DRUID_MAXDIRECTMEMORYSIZE: 8g
+  persistence:
+    size: 500Gi
+
+middleManager:
+  replicaCount: 2
+  persistence:
+    size: 500Gi

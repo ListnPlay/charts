@@ -249,7 +249,7 @@ middleManager:
 #    DRUID_MAXDIRECTMEMORYSIZE: 6172m
 
 monitoring:
-  enabled: true
+  enabled: false
   createServiceMonitor: true
   port: 8000
 
