@@ -105,7 +105,7 @@ to configure that service and possibly override the common `env` configuration.
 
 ### Monitoring
 
-Prometheus monitoring can be enabled as follows:
+Prometheus monitoring can be enabled as follow:
         
     monitoring:
       enabled: true
