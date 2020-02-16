@@ -114,6 +114,7 @@ Prometheus monitoring can be enabled as follows:
 and Druid will be configured to emmit metrics to a sidecaer that collects and exposes them to prometheus automatically.
 You can use the [grafana dashboard](druid-grafana-dashboard.json) to view these metrics.
 
+![Grafana Dashboard](druid-grafana.png)
 
 ### Middle Manager and Historical Persistence Notes
 
