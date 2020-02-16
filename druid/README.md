@@ -20,8 +20,8 @@ Add the featurefm helm repo:
 ```
 helm repo add featurefm 'https://raw.githubusercontent.com/listnplay/charts/master/'
 ```
-s
-Create a `values.yaml` and make your modifications. Use [my-values.yaml](my-values.yaml) as template.
+
+Create a `my-values.yaml` and make your modifications. Use [my-values.yaml](my-values.yaml) as template.
 
 
 **Note** The chart will not work properly without *deep storage* defined (e.g. in s3 bucket). 
@@ -30,7 +30,7 @@ See the [Docs](https://druid.apache.org/docs/latest/configuration/index.html#dee
 for details on the deep storage config options for GCP, Azure, etc.
 
 
-To install the Druid Chart into your Kubernetes cluster:
+To install the Druid Chart into your `bi` namespace of your Kubernetes cluster:
 
 ```bash
 helm install --namespace "bi" --name "druid" featurefm/druid -f my-values.yaml
