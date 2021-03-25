@@ -25,7 +25,7 @@ server:
       presto-logs.http-request-log.pattern=*.log
 
 image:
-  repository: prestosql/presto
+  repository: trinodb/trino
   tag: 351
   pullPolicy: IfNotPresent
 
