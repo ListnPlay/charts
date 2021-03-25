@@ -13,7 +13,7 @@ data:
   node.properties: |
     node.environment={{ .Values.server.node.environment }}
     node.data-dir={{ .Values.server.node.dataDir }}
-    plugin.dir=/usr/lib/presto/plugin
+    plugin.dir=/usr/lib/trino/plugin
 
   jvm.config: |
     -server

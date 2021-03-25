@@ -58,8 +58,8 @@ server
   catalog:
     log.properties: |
       connector.name=localfile
-      presto-logs.http-request-log.location=/presto/etc/data/var/log
-      presto-logs.http-request-log.pattern=*.log
+      trino-logs.http-request-log.location=/trino/etc/data/var/log
+      trino-logs.http-request-log.pattern=*.log
     dbmysql.properties: |
       connector.name=mysql
       connection-url=jdbc:mysql://example.com:port

@@ -13,8 +13,8 @@ server:
   catalog:
     log.properties: |
       connector.name=localfile
-      presto-logs.http-request-log.location=/data/presto/var/log
-      presto-logs.http-request-log.pattern=*.log
+      trino-logs.http-request-log.location=/data/trino/var/log
+      trino-logs.http-request-log.pattern=*.log
 
     mysql_test.properties: |
       connector.name=mysql
