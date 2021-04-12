@@ -1,13 +1,13 @@
 apiVersion: v1
-appVersion: 0.17.0
+appVersion: 0.20.1
 description: Apache Druid is a high performance analytics data store for event-driven data.
 name: druid
-version: 0.3.10
+version: 0.3.11
 home: http://druid.io/
 icon: http://druid.io/img/druid_nav.png
 maintainers:
-  - name: ram
-    email: ram@feature.fm
+  - name: liors
+    email: liors@feature.fm
 sources:
   - https://github.com/listnplay/charts/druid
 keywords:

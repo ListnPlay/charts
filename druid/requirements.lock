@@ -1,9 +1,9 @@
 dependencies:
 - name: zookeeper
-  repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+  repository: https://charts.bitnami.com/bitnami
   version: 1.2.0
 - name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com/
+  repository: https://charts.bitnami.com/bitnami
   version: 7.2.0
-digest: sha256:0d74e5e3bc14aba472c7e20cc659d827b0694df73b7769d7c68aaf687adb6aac
-generated: "2019-11-18T12:53:25.817387+02:00"
+digest: sha256:73d33cbdd94f02544b417d2808f1cf60dbedc4c060998eddff114682fcdbba50
+generated: "2021-04-12T15:21:27.063102+03:00"

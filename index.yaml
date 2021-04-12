@@ -2,8 +2,29 @@ apiVersion: v1
 entries:
   druid:
   - apiVersion: v1
+    appVersion: 0.20.1
+    created: "2021-04-12T15:22:26.444751+03:00"
+    description: Apache Druid is a high performance analytics data store for event-driven
+      data.
+    digest: 68a460638102f3692bff099c95e4e8e50f8580b9ec4af1fef601290b9fae5644
+    home: http://druid.io/
+    icon: http://druid.io/img/druid_nav.png
+    keywords:
+    - olap
+    - database
+    - analytics
+    maintainers:
+    - email: liors@feature.fm
+      name: liors
+    name: druid
+    sources:
+    - https://github.com/listnplay/charts/druid
+    urls:
+    - druid-0.3.11.tgz
+    version: 0.3.11
+  - apiVersion: v1
     appVersion: 0.17.0
-    created: "2021-03-25T20:29:12.42163+02:00"
+    created: "2021-04-12T15:22:26.418721+03:00"
     description: Apache Druid is a high performance analytics data store for event-driven
       data.
     digest: 0804bfb7b0158f708cf0c4263ddfea2df72e6ca88d94705b8c41eb7d1a2cb807
@@ -24,7 +45,7 @@ entries:
     version: 0.3.10
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2021-03-25T20:29:12.448595+02:00"
+    created: "2021-04-12T15:22:26.501794+03:00"
     description: Apache Druid is a high performance analytics data store for event-driven
       data.
     digest: 8557dc919cdbcfdbfaa6d484a0d1629be6372896519803b9b7068f8b75701c7a
@@ -45,7 +66,7 @@ entries:
     version: 0.3.9
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2021-03-25T20:29:12.445097+02:00"
+    created: "2021-04-12T15:22:26.495452+03:00"
     description: Apache Druid is a high performance analytics data store for event-driven
       data.
     digest: f0298c3067364416d5964aee6d9598583e4d4992cdacb04dcf3671dcb0790f5e
@@ -66,7 +87,7 @@ entries:
     version: 0.3.8
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2021-03-25T20:29:12.442237+02:00"
+    created: "2021-04-12T15:22:26.486973+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: 311311aede0ee66e2e6b71b9da10c56a7ac19dce4b9497181590ea710042c593
@@ -87,7 +108,7 @@ entries:
     version: 0.3.7
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2021-03-25T20:29:12.438838+02:00"
+    created: "2021-04-12T15:22:26.480397+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: c102bb14c8ce5f28e36abeca972a5b70ec8b7e52a6edf60c18d8eb8ca22a04e2
@@ -108,7 +129,7 @@ entries:
     version: 0.3.6
   - apiVersion: v1
     appVersion: 0.16.1
-    created: "2021-03-25T20:29:12.435497+02:00"
+    created: "2021-04-12T15:22:26.474102+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: 133642664e7d1751049e1caafbedf2ea76f1c1e6e7861c9b8b519a06bc85b259
@@ -129,7 +150,7 @@ entries:
     version: 0.3.5
   - apiVersion: v1
     appVersion: 0.16.1
-    created: "2021-03-25T20:29:12.432565+02:00"
+    created: "2021-04-12T15:22:26.46599+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: 8ca76c53c4923d4242acb13bcc1a5e59554f09c68bffb15523c3a73916e848f4
@@ -150,7 +171,7 @@ entries:
     version: 0.3.4
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2021-03-25T20:29:12.429757+02:00"
+    created: "2021-04-12T15:22:26.457656+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: ec27195404e30c626fa12913917885d0299b5302ead87b0c9a6124758b56e4a5
@@ -171,7 +192,7 @@ entries:
     version: 0.3.3
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2021-03-25T20:29:12.425268+02:00"
+    created: "2021-04-12T15:22:26.451307+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: a683e419683ae67ff15a7a9012abb3d5107d002daca7728e38850ba48198d56e
@@ -192,7 +213,7 @@ entries:
     version: 0.3.2
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2021-03-25T20:29:12.418365+02:00"
+    created: "2021-04-12T15:22:26.410817+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: 0d025d4ee4e9ee252a061ee1872df50891836a258ac05f55ff23d734ac9c754c
@@ -213,7 +234,7 @@ entries:
     version: 0.3.1
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2021-03-25T20:29:12.413849+02:00"
+    created: "2021-04-12T15:22:26.402403+03:00"
     description: Apache Druid (incubating) is a high performance analytics data store
       for event-driven data.
     digest: fd6049db3ba419612e15b31b110d5f4f05bcc972a6fe22c746d47b45f4f12ee2
@@ -235,7 +256,7 @@ entries:
   presto:
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2021-03-25T20:29:12.453507+02:00"
+    created: "2021-04-12T15:22:26.512596+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 412e81d60c5b59026ef9e778f908a0d386cc68978f66710834f742a42bcd724c
     home: https://prestosql.io
@@ -251,7 +272,7 @@ entries:
     version: 0.4.2
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2021-03-25T20:29:12.453077+02:00"
+    created: "2021-04-12T15:22:26.510165+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 87b1e02df972299ac0c2b506186a6ac887ff7e96728146034b868af97ecb43ad
     home: https://prestosql.io
@@ -267,7 +288,7 @@ entries:
     version: 0.4.1
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2021-03-25T20:29:12.454781+02:00"
+    created: "2021-04-12T15:22:26.515201+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: b427a71d5dd36d499082a0b007a998f33c82220122a98c0291785f790b8a8bea
     home: https://prestosql.io
@@ -283,7 +304,7 @@ entries:
     version: "0.4"
   - apiVersion: v1
     appVersion: "0.347"
-    created: "2021-03-25T20:29:12.452277+02:00"
+    created: "2021-04-12T15:22:26.508559+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 36c8b78a5017f89e1a07b3cb07697366243e6419f1de3ab1ba996ec2e75fce98
     home: https://prestosql.io
@@ -299,7 +320,7 @@ entries:
     version: 0.3.3
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2021-03-25T20:29:12.451297+02:00"
+    created: "2021-04-12T15:22:26.50684+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 21f25ed8f885650b17b60d1f76cce54664768f7f9028868fd1cc1df8a258a589
     home: https://prestosql.io
@@ -315,7 +336,7 @@ entries:
     version: 0.3.2
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2021-03-25T20:29:12.450451+02:00"
+    created: "2021-04-12T15:22:26.505234+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: e8adff9f090450bae75bb1e945681914aa6b4fc403654e4eb3ff2d8079baa3e7
     home: https://prestosql.io
@@ -331,7 +352,7 @@ entries:
     version: 0.3.1
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2021-03-25T20:29:12.449576+02:00"
+    created: "2021-04-12T15:22:26.503561+03:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 1bd880c347818683438d6fc8e0893428f691e36a8ce3ed4ed3a32b254f724b32
     home: https://prestosql.io
@@ -345,4 +366,4 @@ entries:
     urls:
     - presto-0.3.0.tgz
     version: 0.3.0
-generated: "2021-03-25T20:29:12.409818+02:00"
+generated: "2021-04-12T15:22:26.391873+03:00"
