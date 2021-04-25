@@ -1,6 +1,6 @@
 dependencies:
 - name: zookeeper
-  version: 1.2.0
+  version: 1.4.2
   repository: https://charts.bitnami.com/bitnami
   condition: zookeeper.enabled
 - name: postgresql
