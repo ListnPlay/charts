@@ -3,7 +3,37 @@ entries:
   druid:
   - apiVersion: v1
     appVersion: 0.22.1
-    created: "2024-12-18T14:43:20.877207+02:00"
+    created: "2024-12-18T15:12:26.393115+02:00"
+    dependencies:
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.4.11
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    description: Apache Druid is a high performance analytics data store for event-driven
+      data.
+    digest: 18fdafabf31171ff46f2d5b95b9bf813e62a4c45182cfc6fd8307ec8fa4e0494
+    home: http://druid.io/
+    icon: http://druid.io/img/druid_nav.png
+    keywords:
+    - olap
+    - database
+    - analytics
+    maintainers:
+    - email: liors@feature.fm
+      name: liors
+    name: druid
+    sources:
+    - https://github.com/listnplay/charts/druid
+    urls:
+    - druid-0.3.22.tgz
+    version: 0.3.22
+  - apiVersion: v1
+    appVersion: 0.22.1
+    created: "2024-12-18T15:12:26.384564+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -33,7 +63,7 @@ entries:
     version: 0.3.21
   - apiVersion: v1
     appVersion: 0.22.1
-    created: "2024-12-18T14:43:20.870802+02:00"
+    created: "2024-12-18T15:12:26.377947+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -63,7 +93,7 @@ entries:
     version: 0.3.20
   - apiVersion: v1
     appVersion: 0.21.1
-    created: "2024-12-18T14:43:20.861055+02:00"
+    created: "2024-12-18T15:12:26.368657+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -93,7 +123,7 @@ entries:
     version: 0.3.14
   - apiVersion: v1
     appVersion: 0.22.0
-    created: "2024-12-18T14:43:20.855572+02:00"
+    created: "2024-12-18T15:12:26.363104+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -123,7 +153,7 @@ entries:
     version: 0.3.13
   - apiVersion: v1
     appVersion: 0.20.1
-    created: "2024-12-18T14:43:20.849698+02:00"
+    created: "2024-12-18T15:12:26.357453+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -153,7 +183,7 @@ entries:
     version: 0.3.12
   - apiVersion: v1
     appVersion: 0.20.1
-    created: "2024-12-18T14:43:20.843338+02:00"
+    created: "2024-12-18T15:12:26.350808+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -183,7 +213,7 @@ entries:
     version: 0.3.11
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2024-12-18T14:43:20.836899+02:00"
+    created: "2024-12-18T15:12:26.345294+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -213,7 +243,7 @@ entries:
     version: 0.3.10
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2024-12-18T14:43:20.894131+02:00"
+    created: "2024-12-18T15:12:26.408305+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -243,7 +273,7 @@ entries:
     version: 0.3.9
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2024-12-18T14:43:20.891714+02:00"
+    created: "2024-12-18T15:12:26.405971+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -273,7 +303,7 @@ entries:
     version: 0.3.8
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2024-12-18T14:43:20.8892+02:00"
+    created: "2024-12-18T15:12:26.404067+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -303,7 +333,7 @@ entries:
     version: 0.3.7
   - apiVersion: v1
     appVersion: 0.17.0
-    created: "2024-12-18T14:43:20.887132+02:00"
+    created: "2024-12-18T15:12:26.401729+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -333,7 +363,7 @@ entries:
     version: 0.3.6
   - apiVersion: v1
     appVersion: 0.16.1
-    created: "2024-12-18T14:43:20.884473+02:00"
+    created: "2024-12-18T15:12:26.399807+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -363,7 +393,7 @@ entries:
     version: 0.3.5
   - apiVersion: v1
     appVersion: 0.16.1
-    created: "2024-12-18T14:43:20.882107+02:00"
+    created: "2024-12-18T15:12:26.397525+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -393,7 +423,7 @@ entries:
     version: 0.3.4
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2024-12-18T14:43:20.879433+02:00"
+    created: "2024-12-18T15:12:26.395297+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -423,7 +453,7 @@ entries:
     version: 0.3.3
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2024-12-18T14:43:20.863788+02:00"
+    created: "2024-12-18T15:12:26.370815+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -453,7 +483,7 @@ entries:
     version: 0.3.2
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2024-12-18T14:43:20.833452+02:00"
+    created: "2024-12-18T15:12:26.343365+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -483,7 +513,7 @@ entries:
     version: 0.3.1
   - apiVersion: v1
     appVersion: "0.16"
-    created: "2024-12-18T14:43:20.831138+02:00"
+    created: "2024-12-18T15:12:26.341147+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -514,7 +544,7 @@ entries:
   presto:
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2024-12-18T14:43:20.895899+02:00"
+    created: "2024-12-18T15:12:26.409927+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 412e81d60c5b59026ef9e778f908a0d386cc68978f66710834f742a42bcd724c
     home: https://prestosql.io
@@ -530,7 +560,7 @@ entries:
     version: 0.4.2
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2024-12-18T14:43:20.895664+02:00"
+    created: "2024-12-18T15:12:26.409704+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 87b1e02df972299ac0c2b506186a6ac887ff7e96728146034b868af97ecb43ad
     home: https://prestosql.io
@@ -546,7 +576,7 @@ entries:
     version: 0.4.1
   - apiVersion: v1
     appVersion: "0.351"
-    created: "2024-12-18T14:43:20.896136+02:00"
+    created: "2024-12-18T15:12:26.410147+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: b427a71d5dd36d499082a0b007a998f33c82220122a98c0291785f790b8a8bea
     home: https://prestosql.io
@@ -562,7 +592,7 @@ entries:
     version: "0.4"
   - apiVersion: v1
     appVersion: "0.347"
-    created: "2024-12-18T14:43:20.895426+02:00"
+    created: "2024-12-18T15:12:26.409469+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 36c8b78a5017f89e1a07b3cb07697366243e6419f1de3ab1ba996ec2e75fce98
     home: https://prestosql.io
@@ -578,7 +608,7 @@ entries:
     version: 0.3.3
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2024-12-18T14:43:20.895192+02:00"
+    created: "2024-12-18T15:12:26.409229+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 21f25ed8f885650b17b60d1f76cce54664768f7f9028868fd1cc1df8a258a589
     home: https://prestosql.io
@@ -594,7 +624,7 @@ entries:
     version: 0.3.2
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2024-12-18T14:43:20.894944+02:00"
+    created: "2024-12-18T15:12:26.408994+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: e8adff9f090450bae75bb1e945681914aa6b4fc403654e4eb3ff2d8079baa3e7
     home: https://prestosql.io
@@ -610,7 +640,7 @@ entries:
     version: 0.3.1
   - apiVersion: v1
     appVersion: "0.326"
-    created: "2024-12-18T14:43:20.894597+02:00"
+    created: "2024-12-18T15:12:26.408704+02:00"
     description: Distributed SQL query engine for running interactive analytic queries
     digest: 1bd880c347818683438d6fc8e0893428f691e36a8ce3ed4ed3a32b254f724b32
     home: https://prestosql.io
@@ -624,4 +654,4 @@ entries:
     urls:
     - presto-0.3.0.tgz
     version: 0.3.0
-generated: "2024-12-18T14:43:20.828418+02:00"
+generated: "2024-12-18T15:12:26.335821+02:00"
