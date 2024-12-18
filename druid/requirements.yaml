@@ -1,6 +1,6 @@
 dependencies:
 - name: zookeeper
-  version: 3.0.8
+  version: 11.4.11
   repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   condition: zookeeper.enabled
 - name: postgresql
