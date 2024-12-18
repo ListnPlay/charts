@@ -43,11 +43,11 @@ spec:
           - name: druid_metadata_storage_type
             value: postgresql
           - name: druid_metadata_storage_connector_connectURI
-            value: "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.auth.database }}"
+            value: "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.postgresqlDatabase }}"
           - name: druid_metadata_storage_connector_user
-            value: "{{ .Values.postgresql.auth.username }}"
+            value: "{{ .Values.postgresql.postgresqlUsername }}"
           - name: druid_metadata_storage_connector_password
-            value: "{{ .Values.postgresql.auth.password }}"
+            value: "{{ .Values.postgresql.postgresqlPassword }}"
           {{- end }}
           - name: JAVA_OPTS
             value: {{ .Values.broker.javaOpts }}
