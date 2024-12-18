@@ -2,7 +2,7 @@
 
 image:
   repository: apache/druid
-  tag: 0.21.1
+  tag: 0.22.1
   pullPolicy: IfNotPresent
 
 extensions:
