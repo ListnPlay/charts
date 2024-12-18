@@ -276,7 +276,8 @@ zookeeper:
 # ------------------------------------------------------------------------------
 postgresql:
   enabled: true
-  postgresqlPostgresPassword: druidroot
-  postgresqlUsername: druid
-  postgresqlPassword: druid
-  postgresqlDatabase: druid
+  auth:
+    postgresPassword: druidroot
+    username: druid
+    password: druid
+    database: druid
